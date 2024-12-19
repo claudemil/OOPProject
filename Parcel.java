@@ -14,6 +14,7 @@ public class Parcel {
         this.price = price;
         this.weight = weight;
         this.warehouse = warehouse;
+        this.status = "In " + warehouse.getName();
         id = parcelCount++;
     }
 
@@ -47,5 +48,13 @@ public class Parcel {
 
     public void setStatus(String status){
         this.status = status;
+ 
+    }
+
+    public String toString() {
+        return String.format(
+            "Parcel{id=%d, name='%s', weight=%.2fkg, price=%.2f, status='%s', warehouse='%s'}", 
+            id, name, weight, price, status, (warehouse != null ? warehouse.toString() : "None")
+        );
     }
 }

@@ -36,4 +36,17 @@ public class Customer {
     public Coordinates getCoordinates() {
         return coordinates;
     }
+
+    @Override
+    public String toString(){
+        StringBuilder parcelDetails = new StringBuilder();
+        for(Parcel parcel : parcelPair.values()){
+            parcelDetails.append(parcel.toString()).append("\n");
+        }
+
+        // return parcelDetails.toString().trim();}
+        return String.format(
+            "Customer{name='%s', address='%s', coordinates=%s, parcels=\n%s}",
+            name, address, coordinates, parcelDetails.toString());
+    }
 }

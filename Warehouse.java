@@ -1,10 +1,12 @@
 public class Warehouse {
+    private String name;
     private double distanceRate = 50; //placeholder value
     private Coordinates coordinates;
     private Warehouse northNeighbor = null;
     private Warehouse southNeighbor = null;
 
-    public Warehouse(double x, double y){
+    public Warehouse(String name, double x, double y){
+        this.name = name;
         this.coordinates = new Coordinates(x, y);
     }
 
@@ -38,5 +40,14 @@ public class Warehouse {
         } else {
             return southNeighbor;
         }
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    @Override
+    public String toString(){
+        return getName();
     }
 }
