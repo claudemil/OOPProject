@@ -3,13 +3,15 @@ public class DeliveryTracking implements Runnable {
     private double location;
     private String destination;
     private Coordinates source;
-    
+
     public DeliveryTracking(Parcel parcel, Customer customer) {
         this.parcel = parcel;
         this.source = parcel.getWarehouse().getCoordinates();
         this.destination = customer.getAddress();
-        
     }
+
+    // new edits
+    // HERE
 
     @Override
     public void run() {
