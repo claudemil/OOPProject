@@ -1,0 +1,6 @@
+public class ParcelList{
+    private static int parcelCount = 1;
+    private int id;
+    private HashMap<Integer, Parcel> parcels;
+
+}

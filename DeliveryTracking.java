@@ -26,23 +26,19 @@ public class DeliveryTracking implements Runnable {
          */
         while (i <= maxValue) {
             if(i == maxValue * 0.25) {
-                parcel.setStatus("Parcel is out of Warehouse");
-                System.out.println(parcel.getStatus());
+                parcel.setStatus(String.format("Parcel %s is out of Warehouse", parcel.getName()));
             } else if (i == maxValue * 0.50) {
-                parcel.setStatus("Parcel is in your local warehouse");
-                System.out.println(parcel.getStatus());
+                parcel.setStatus(String.format("Parcel %s is in your local warehouse", parcel.getName()));
             } else if (i == maxValue * 0.75) {
-                parcel.setStatus("Parcel is in transit to you");
-                System.out.println(parcel.getStatus());
+                parcel.setStatus(String.format("Parcel is in transit to you", parcel.getName()));
             } else if (i == maxValue) {
-                parcel.setStatus("Parcel successfully delivered!");
-                System.out.println(parcel.getStatus());
+                parcel.setStatus(String.format("Parcel successfully delivered!", parcel.getName()));
             }
 
             i += maxValue / 4;
 
             try{
-                Thread.sleep(15000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

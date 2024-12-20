@@ -15,35 +15,39 @@ public class Parcel {
         this.weight = weight;
         this.warehouse = warehouse;
         this.status = "In " + warehouse.getName();
-        id = parcelCount++;
+        this.id = parcelCount++;
     }
 
     public double getPrice(){
-        return price;
+        return this.price;
     }
 
     public double getWeight(){
-        return weight;
+        return this.weight;
     }
 
     public double getBaseRate(){
-        return baseRate;
+        return this.baseRate;
     }
 
     public double getWeightRate(){
-        return weightRate;
+        return this.weightRate;
     }
 
     public Warehouse getWarehouse(){
-        return warehouse;
+        return this.warehouse;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public int getId(){
-        return id;
+        return this.id;
     }
 
     public String getStatus(){
-        return status;
+        return this.status;
     }
 
     public void setStatus(String status){
@@ -53,8 +57,8 @@ public class Parcel {
 
     public String toString() {
         return String.format(
-            "Parcel{id=%d, name='%s', weight=%.2fkg, price=%.2f, status='%s', warehouse='%s'}", 
-            id, name, weight, price, status, (warehouse != null ? warehouse.toString() : "None")
+            "id = %d, name = '%s', weight = %.2fkg, price = %.2f, status = '%s', warehouse = '%s' \n" , 
+            id, name, weight, price, status, (warehouse != null ? warehouse.toString() : "None") 
         );
     }
 }

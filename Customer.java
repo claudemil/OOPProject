@@ -46,7 +46,7 @@ public class Customer {
 
         // return parcelDetails.toString().trim();}
         return String.format(
-            "Customer{name='%s', address='%s', coordinates=%s, parcels=\n%s}",
-            name, address, coordinates, parcelDetails.toString());
+            "Customer: %s\nParcels:\n{%s}",
+            name, parcelDetails.toString().trim());
     }
 }
