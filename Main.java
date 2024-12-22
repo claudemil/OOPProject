@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -6,8 +5,12 @@ public class Main {
         
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Customer customer = new Customer("emil", "banago", 2, 5);
+        Customer customer = new Customer(null, null, 0, 0);
         DeliveryTracking tracker;
+        String customerName;
+        String customerAddress;
+        double customerX;
+        double customerY;
 
         Warehouse warehouse = new Warehouse("Warehouse A", 2.3, 3.4);
         Warehouse warehouse2 = new Warehouse("Warehouse B", 5, -7);
@@ -16,6 +19,12 @@ public class Main {
         Parcel parcel3 = new Parcel("Cellphone", 12300, 0.1, warehouse2);
         Parcel parcel4 = new Parcel("Spray Paint",75,0.2, warehouse);
         Parcel parcel5 = new Parcel("Sandbag",500,40, warehouse);
+        Parcel parcel6 = new Parcel("Computer", 5700, 3, warehouse);
+        Parcel parcel7 = new Parcel("Plate", 200, 0.5, warehouse2);
+        Parcel parcel8 = new Parcel("Plastic Bottle", 75, 0.1, warehouse2);
+        Parcel parcel9 = new Parcel("Electric Lamp",1200,0.7, warehouse);
+        Parcel parcel10 = new Parcel("Aircon",11400,10, warehouse);
+        
         paymentProcessor checkPayment = new paymentProcessor();
 
         ParcelList parcels = new ParcelList();
@@ -24,6 +33,79 @@ public class Main {
         parcels.addParcel(parcel3);
         parcels.addParcel(parcel4);
         parcels.addParcel(parcel5);
+        parcels.addParcel(parcel5);
+        parcels.addParcel(parcel6);
+        parcels.addParcel(parcel7);
+        parcels.addParcel(parcel8);
+        parcels.addParcel(parcel9);
+        parcels.addParcel(parcel10);
+
+        boolean creation = false;
+        while(!creation){
+            try{
+                System.out.println("Welcome to 'This Parcel Booking & Delivery System'!");
+                System.out.println("To access our features, first you must create an account!");
+
+                while(true){
+                    System.out.print("Customer name: ");
+                    customerName = sc.nextLine();
+
+                    if(customerName.matches("[a-zA-z]+")){
+                        break;
+                    } else{
+                        System.out.println("Invalid name. Avoid using special characters!");
+                    }
+                }
+
+                while(true){
+                    System.out.print("Address: ");
+                    customerAddress = sc.nextLine();
+
+                    if(customerAddress.matches("[a-zA-Z]+")){
+                        break;
+                    } else{
+                        System.out.println("Invalid address. Avoid using special characters!");
+                    }
+                }
+
+                while(true){
+                    try{
+                        System.out.print("X coordinate: ");
+                        customerX = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    }catch(InputMismatchException e){
+                        System.out.println("Input numbers only!");
+                        sc.nextLine();
+                    }
+                }
+
+                while(true){
+                    try{
+                        System.out.print("Y coordinate: ");
+                        customerY = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    }catch(InputMismatchException e){
+                        System.out.println("Input valid numbers!");
+                        sc.nextLine();
+                    }
+                }
+
+                customer = new Customer(customerName, customerAddress, customerX, customerY);
+                System.out.printf("Account successfully created!\nWelcome, %s!\n\n", customerName);
+                System.out.println("=== Customer Details ===");
+                System.out.printf("Name       : %s\n", customerName);
+                System.out.printf("Address    : %s\n", customerAddress);
+                System.out.printf("X Coord.   : %.2f\n", customerX);
+                System.out.printf("Y Coord.   : %.2f\n", customerY);
+                System.out.println("========================\n");
+                creation = true;
+            } catch(InputMismatchException e){
+                System.out.println("Invalid input!");
+            }
+        }
+
 
         while(true){
             try{
@@ -113,19 +195,9 @@ public class Main {
                 catch(InputMismatchException e){
                 System.out.println("Invalid input!");
                 sc.nextLine();
-                }
-        //     } catch(NullPointerException e){
-        //         System.out.println("Invalid input! null");
-        //     }
-        // }
+                } catch(NullPointerException e){
+                System.out.println("Invalid input!");
             }
-    
-
-
-
-
-        
-
-
-}
+        }
+    }
 }
