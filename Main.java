@@ -50,7 +50,7 @@ public class Main {
                     System.out.print("Customer name: ");
                     customerName = sc.nextLine();
 
-                    if(customerName.matches("[a-zA-z]+")){
+                    if(customerName.matches("[a-zA-z ]+")){
                         break;
                     } else{
                         System.out.println("Invalid name. Avoid using special characters!");
@@ -61,7 +61,7 @@ public class Main {
                     System.out.print("Address: ");
                     customerAddress = sc.nextLine();
 
-                    if(customerAddress.matches("[a-zA-Z]+")){
+                    if(customerAddress.matches("[a-zA-Z ]+")){
                         break;
                     } else{
                         System.out.println("Invalid address. Avoid using special characters!");
