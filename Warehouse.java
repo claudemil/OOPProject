@@ -42,12 +42,12 @@ public class Warehouse {
         }
     }
 
-    public String getName(){
+    public String getWarehouseName(){
         return this.name;
     }
 
     @Override
     public String toString(){
-        return getName();
+        return getWarehouseName();
     }
 }

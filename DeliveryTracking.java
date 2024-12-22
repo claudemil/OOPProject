@@ -30,9 +30,9 @@ public class DeliveryTracking implements Runnable {
             } else if (i == maxValue * 0.50) {
                 parcel.setStatus(String.format("Parcel %s is in your local warehouse", parcel.getName()));
             } else if (i == maxValue * 0.75) {
-                parcel.setStatus(String.format("Parcel is in transit to you", parcel.getName()));
+                parcel.setStatus(String.format("Parcel %s is in transit to you", parcel.getName()));
             } else if (i == maxValue) {
-                parcel.setStatus(String.format("Parcel successfully delivered!", parcel.getName()));
+                parcel.setStatus(String.format("Parcel %s successfully delivered!", parcel.getName()));
             }
 
             i += maxValue / 4;

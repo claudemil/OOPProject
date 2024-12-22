@@ -37,16 +37,39 @@ public class Customer {
         return coordinates;
     }
 
-    @Override
-    public String toString(){
-        StringBuilder parcelDetails = new StringBuilder();
-        for(Parcel parcel : parcelPair.values()){
-            parcelDetails.append(parcel.toString()).append("\n");
-        }
+    public void printParcels() {
+        System.out.println("================================================================================================================");
+        System.out.println("Customer: " + this.name);
+        System.out.println("================================================================================================================");
 
-        // return parcelDetails.toString().trim();}
-        return String.format(
-            "Customer: %s\nParcels:\n{%s}",
-            name, parcelDetails.toString().trim());
-    }
+        if (parcelPair.size() == 0) {
+            System.out.println("No parcels booked.");
+        } else {
+            // Print table header
+            System.out.println("ID   | Name            | Weight    | Price     | Status                                   | Warehouse");
+            System.out.println("================================================================================================================");
+
+            // Iterate over parcels and print their details
+            for (Parcel parcel : parcelPair.values()) { // Assuming ParcelList has a `getParcels` method
+                String warehouseName;
+                if (parcel.getWarehouse() != null) {
+                    warehouseName = parcel.getWarehouseName();
+                } else {
+                    warehouseName = "None";
+                }
+
+                System.out.println(String.format(
+                    "%-4d | %-15s | %6.2f kg | $%-8.2f | %-40s | %-10s",
+                    parcel.getId(),
+                    parcel.getName(),
+                    parcel.getWeight(),
+                    parcel.getPrice(),
+                    parcel.getStatus(),
+                    warehouseName
+                ));
+            }
+
+            System.out.println("================================================================================================================");
+        }
+}
 }

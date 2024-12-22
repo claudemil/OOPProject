@@ -16,6 +16,7 @@ public class Main {
         Parcel parcel3 = new Parcel("Cellphone", 12300, 0.1, warehouse2);
         Parcel parcel4 = new Parcel("Spray Paint",75,0.2, warehouse);
         Parcel parcel5 = new Parcel("Sandbag",500,40, warehouse);
+        paymentProcessor checkPayment = new paymentProcessor();
 
         ParcelList parcels = new ParcelList();
         parcels.addParcel(parcel1);
@@ -29,8 +30,8 @@ public class Main {
                 int parcelChoice;
                 boolean intInput = false;
                 
-                while(intInput == false){
-                    System.out.print("[1] To book parcels \n[2] To check for parcel status\n[3] To leave:");
+                while(!intInput){
+                    System.out.print("[1] To book parcels \n[2] To check for parcel status\n[3] To leave: ");
                     parcelChoice = sc.nextInt();
                     sc.nextLine();
 
@@ -38,7 +39,7 @@ public class Main {
                         boolean flag = false;
 
                         while(!flag){
-                            System.out.println(parcels);
+                            System.out.println(parcels.toString());
                             System.out.print("Input the id of the desired parcel [-1] to leave: ");
                             int parcelIdChoice = sc.nextInt();
                             sc.nextLine();
@@ -48,15 +49,32 @@ public class Main {
                                 } else if(parcelIdChoice > parcels.getSize() || parcelIdChoice < 1){
                                     System.out.println("Id does not exist!");
                                 } else{
-                                    customer.addParcel(parcels.getParcel(parcelIdChoice));
-                                    tracker = new DeliveryTracking(customer.getParcel(parcelIdChoice), customer);
-                                    new Thread(tracker).start();
-                                    System.out.println(customer +"\n");
+                                    boolean paid = false;
+                                    int choice = 0;
+
+                                    while(!paid){
+                                        System.out.println("The price of this parcel is " + checkPayment.calculateCost(customer, parcels.getParcel(parcelIdChoice)));
+                                        System.out.print("Payment here [0] to exit: ");
+                                        double customerPayment = sc.nextDouble();
+                                        sc.nextLine();
+                                        if(customerPayment == 0){
+                                            System.out.println("Payment interface exiting...");
+                                            break;
+                                        }
+                                        paid = checkPayment.processPayment(customer, parcels.getParcel(parcelIdChoice), customerPayment);
+                                        customer.addParcel(parcels.getParcel(parcelIdChoice));
+                                        
+                                    
+                                    }
+                                    if(paid){
+                                        tracker = new DeliveryTracking(customer.getParcel(parcelIdChoice), customer);
+                                        new Thread(tracker).start();
+                                        customer.printParcels();
+                                    }
 
                                     System.out.print("Order again? [1] Yes [2] No: ");
-                                    int choice = sc.nextInt();
+                                    choice = sc.nextInt();
                                     sc.nextLine();
-
                                     if(choice == 1){
                                         //if choice is 1 then order again else go back to the first option interface
                                     } 
@@ -68,8 +86,8 @@ public class Main {
                     } else if(parcelChoice == 2){
                         boolean flag = false;
 
-                        System.out.println(customer +"\n");
-                        
+                        customer.printParcels();
+                            
                         while(!flag){
                             System.out.print("Input the id of the desired parcel to inspect [-1] to leave: ");
                             int parcelIdChoice = sc.nextInt();
@@ -95,8 +113,12 @@ public class Main {
                 catch(InputMismatchException e){
                 System.out.println("Invalid input!");
                 sc.nextLine();
+                }
+        //     } catch(NullPointerException e){
+        //         System.out.println("Invalid input! null");
+        //     }
+        // }
             }
-        }
     
 
 

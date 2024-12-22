@@ -14,7 +14,7 @@ public class Parcel {
         this.price = price;
         this.weight = weight;
         this.warehouse = warehouse;
-        this.status = "In " + warehouse.getName();
+        this.status = "In " + warehouse.getWarehouseName();
         this.id = parcelCount++;
     }
 
@@ -38,6 +38,10 @@ public class Parcel {
         return this.warehouse;
     }
 
+    public String getWarehouseName(){
+        return this.warehouse.getWarehouseName();
+    }
+
     public String getName(){
         return this.name;
     }
@@ -57,8 +61,8 @@ public class Parcel {
 
     public String toString() {
         return String.format(
-            "id = %d, name = '%s', weight = %.2fkg, price = %.2f, status = '%s', warehouse = '%s' \n" , 
-            id, name, weight, price, status, (warehouse != null ? warehouse.toString() : "None") 
+            "ID: %-4d | Name: %-15s | Weight: %6.2f kg | Price: $%-8.2f | Status: %-40s | Warehouse: %-10s",
+            id, name, weight, price, status, (warehouse != null ? warehouse.toString() : "None")
         );
     }
 }
