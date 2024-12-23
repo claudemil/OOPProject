@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class Customer {
     private String name;
     private String address;
-    // private Coordinates coordinates;
+    private Coordinates coordinates;
     private HashMap<Integer, Parcel> parcelPair;
 
     // public Customer(String name, String address, double x, double y) {
@@ -39,9 +39,9 @@ public class Customer {
         return address;
     }
 
-    // public Coordinates getCoordinates() {
-    //     return coordinates;
-    // }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
     public void printParcels() {
         System.out.println("================================================================================================================");

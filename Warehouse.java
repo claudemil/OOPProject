@@ -1,7 +1,7 @@
 public class Warehouse {
     private String name;
     private double distanceRate = 50; //placeholder value
-    // private Coordinates coordinates;
+    private Coordinates coordinates;
     // private Warehouse northNeighbor = null;
     // private Warehouse southNeighbor = null;
 
@@ -14,9 +14,9 @@ public class Warehouse {
         this.name = name;
     }
 
-    // public double getDistance(Customer customer){
-    //     return this.coordinates.distanceTo(customer.getCoordinates());
-    // }
+    public double getDistance(Customer customer){
+        return this.coordinates.distanceTo(customer.getCoordinates());
+    }
 
     public double getDistanceRate() {
         return distanceRate;

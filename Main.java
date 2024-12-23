@@ -10,8 +10,8 @@ public class Main {
         DeliveryTracking tracker;
         String customerName;
         String customerAddress;
-        double customerX;
-        double customerY;
+        // double customerX;
+        // double customerY;
 
         // Warehouse warehouse = new Warehouse("Warehouse A", 2.3, 3.4);
         // Warehouse warehouse2 = new Warehouse("Warehouse B", 5, -7);
