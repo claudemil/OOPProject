@@ -3,13 +3,19 @@ import java.util.HashMap;
 public class Customer {
     private String name;
     private String address;
-    private Coordinates coordinates;
+    // private Coordinates coordinates;
     private HashMap<Integer, Parcel> parcelPair;
 
-    public Customer(String name, String address, double x, double y) {
+    // public Customer(String name, String address, double x, double y) {
+    //     this.name = name;
+    //     this.address = address;
+    //     this.coordinates = new Coordinates(x, y);
+    //     this.parcelPair = new HashMap<>();
+    // }
+
+    public Customer(String name, String address){
         this.name = name;
         this.address = address;
-        this.coordinates = new Coordinates(x, y);
         this.parcelPair = new HashMap<>();
     }
 
@@ -33,9 +39,9 @@ public class Customer {
         return address;
     }
 
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
+    // public Coordinates getCoordinates() {
+    //     return coordinates;
+    // }
 
     public void printParcels() {
         System.out.println("================================================================================================================");
@@ -46,7 +52,7 @@ public class Customer {
             System.out.println("No parcels booked.");
         } else {
             // Print table header
-            System.out.println("ID   | Name            | Weight    | Price     | Status                                   | Warehouse");
+            System.out.println("ID   | Name            | Weight    | Price     | Status                                   | Origin");
             System.out.println("================================================================================================================");
 
             // Iterate over parcels and print their details

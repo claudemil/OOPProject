@@ -7,14 +7,14 @@ public class Parcel {
     private double baseRate;
     private double weightRate = 20;
     private String status;
-    private Warehouse warehouse;
+    private Warehouse origin;
 
-    public Parcel(String name, double price, double weight, Warehouse warehouse) {
+    public Parcel(String name, double price, double weight, Warehouse origin) {
         this.name = name;
         this.price = price;
         this.weight = weight;
-        this.warehouse = warehouse;
-        this.status = "In " + warehouse.getWarehouseName();
+        this.origin = origin;
+        this.status = "In " + origin.getWarehouseName();
         this.id = parcelCount++;
     }
 
@@ -35,11 +35,11 @@ public class Parcel {
     }
 
     public Warehouse getWarehouse(){
-        return this.warehouse;
+        return this.origin;
     }
 
     public String getWarehouseName(){
-        return this.warehouse.getWarehouseName();
+        return this.origin.getWarehouseName();
     }
 
     public String getName(){
@@ -61,8 +61,8 @@ public class Parcel {
 
     public String toString() {
         return String.format(
-            "ID: %-4d | Name: %-15s | Weight: %6.2f kg | Price: $%-8.2f | Status: %-40s | Warehouse: %-10s",
-            id, name, weight, price, status, (warehouse != null ? warehouse.toString() : "None")
+            "ID: %-4d | Name: %-15s | Weight: %6.2f kg | Price: $%-8.2f | Status: %-40s | Origin: %-10s",
+            id, name, weight, price, status, (origin != null ? origin.toString() : "None")
         );
     }
 }
