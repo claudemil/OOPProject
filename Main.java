@@ -5,18 +5,15 @@ public class Main {
         
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Customer customer = new Customer(null, null, 0, 0);
-        Customer customer = new Customer(null, null);
+        Customer customer = new Customer(null, null, 0, 0);
         DeliveryTracking tracker;
         String customerName;
         String customerAddress;
-        // double customerX;
-        // double customerY;
+        double customerX;
+        double customerY;
 
-        // Warehouse warehouse = new Warehouse("Warehouse A", 2.3, 3.4);
-        // Warehouse warehouse2 = new Warehouse("Warehouse B", 5, -7);
-        Warehouse warehouse = new Warehouse("Warehouse A");
-        Warehouse warehouse2 = new Warehouse("Warehouse B");
+        Warehouse warehouse = new Warehouse("Warehouse A", 2.3, 3.4);
+        Warehouse warehouse2 = new Warehouse("Warehouse B", 5, -7);
         Parcel parcel1 = new Parcel("Dumbbell", 100, 20, warehouse);
         Parcel parcel2 = new Parcel("Book", 375, 0.5, warehouse2);
         Parcel parcel3 = new Parcel("Cellphone", 12300, 0.1, warehouse2);
@@ -71,38 +68,37 @@ public class Main {
                     }
                 }
 
-                // while(true){
-                //     try{
-                //         System.out.print("X coordinate: ");
-                //         customerX = sc.nextInt();
-                //         sc.nextLine();
-                //         break;
-                //     }catch(InputMismatchException e){
-                //         System.out.println("Input numbers only!");
-                //         sc.nextLine();
-                //     }
-                // }
+                while(true){
+                    try{
+                        System.out.print("X coordinate: ");
+                        customerX = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    }catch(InputMismatchException e){
+                        System.out.println("Input numbers only!");
+                        sc.nextLine();
+                    }
+                }
 
-                // while(true){
-                //     try{
-                //         System.out.print("Y coordinate: ");
-                //         customerY = sc.nextInt();
-                //         sc.nextLine();
-                //         break;
-                //     }catch(InputMismatchException e){
-                //         System.out.println("Input valid numbers!");
-                //         sc.nextLine();
-                //     }
-                // }
+                while(true){
+                    try{
+                        System.out.print("Y coordinate: ");
+                        customerY = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    }catch(InputMismatchException e){
+                        System.out.println("Input valid numbers!");
+                        sc.nextLine();
+                    }
+                }
 
-                // customer = new Customer(customerName, customerAddress, customerX, customerY);
-                customer = new Customer(customerName, customerAddress);
+                customer = new Customer(customerName, customerAddress, customerX, customerY);
                 System.out.printf("Account successfully created!\nWelcome, %s!\n\n", customerName);
                 System.out.println("=== Customer Details ===");
                 System.out.printf("Name       : %s\n", customerName);
                 System.out.printf("Address    : %s\n", customerAddress);
-                // System.out.printf("X Coord.   : %.2f\n", customerX);
-                // System.out.printf("Y Coord.   : %.2f\n", customerY);
+                System.out.printf("X Coord.   : %.2f\n", customerX);
+                System.out.printf("Y Coord.   : %.2f\n", customerY);
                 System.out.println("========================\n");
                 creation = true;
             } catch(InputMismatchException e){
@@ -199,9 +195,10 @@ public class Main {
                 catch(InputMismatchException e){
                 System.out.println("Invalid input!");
                 sc.nextLine();
-                } catch(NullPointerException e){
-                System.out.println("Invalid input!");
-            }
+            //     } catch(NullPointerException e){
+            //     System.out.println("Invalid input! null");
+            // }
         }
     }
+}
 }

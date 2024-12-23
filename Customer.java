@@ -6,16 +6,10 @@ public class Customer {
     private Coordinates coordinates;
     private HashMap<Integer, Parcel> parcelPair;
 
-    // public Customer(String name, String address, double x, double y) {
-    //     this.name = name;
-    //     this.address = address;
-    //     this.coordinates = new Coordinates(x, y);
-    //     this.parcelPair = new HashMap<>();
-    // }
-
-    public Customer(String name, String address){
+    public Customer(String name, String address, double x, double y) {
         this.name = name;
         this.address = address;
+        this.coordinates = new Coordinates(x, y);
         this.parcelPair = new HashMap<>();
     }
 

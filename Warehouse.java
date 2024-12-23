@@ -5,14 +5,11 @@ public class Warehouse {
     // private Warehouse northNeighbor = null;
     // private Warehouse southNeighbor = null;
 
-    // public Warehouse(String name, double x, double y){
-    //     this.name = name;
-    //     this.coordinates = new Coordinates(x, y);
-    // }
-
-    public Warehouse(String name){
+    public Warehouse(String name, double x, double y){
         this.name = name;
+        this.coordinates = new Coordinates(x, y);
     }
+
 
     public double getDistance(Customer customer){
         return this.coordinates.distanceTo(customer.getCoordinates());
@@ -22,9 +19,9 @@ public class Warehouse {
         return distanceRate;
     }
 
-    // public Coordinates getCoordinates() {
-    //     return coordinates;
-    // }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
     // public void setNeighbors(Warehouse northNeighbor, Warehouse southNeighbor) {
     //     if (northNeighbor.coordinates == coordinates || southNeighbor.coordinates == coordinates) {
