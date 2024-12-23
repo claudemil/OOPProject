@@ -1,13 +1,13 @@
 public class DeliveryTracking implements Runnable {
     private Parcel parcel;
     // private double location;
-    // private String destination;
+    private String destination;
     // private Coordinates source;
 
     public DeliveryTracking(Parcel parcel, Customer customer) {
         this.parcel = parcel;
         // this.source = parcel.getWarehouse().getCoordinates();
-        // this.destination = customer.getAddress();
+        this.destination = customer.getAddress();
     }
 
 
